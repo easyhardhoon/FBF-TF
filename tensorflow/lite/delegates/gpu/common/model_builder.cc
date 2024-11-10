@@ -57,7 +57,8 @@ limitations under the License.
 
 #include "tensorflow/lite/kmdebug.h"
 
-#define YOLO
+//#define YOLO
+#define MobileBERT
 
 namespace tflite {
 namespace gpu {
@@ -3046,6 +3047,13 @@ TfLiteIntArray* GetOpsToReplace(TfLiteContext* context, bool allow_quant_ops,
     if(registration->builtin_code == 18){   
         // if(priority_partition_num ==0)
           // printf("FOUND A FALLBACK LAYER [MUL]... MAKE GPU DEL NODE \n");
+        return false;
+    }
+    #endif
+    #ifdef MobileBERT
+    if(registration->builtin_code == 9){    // MobileBERT TMP (Fully Connected layer fallback)
+        // if(priority_partition_num ==0)
+          // printf("FOUND A FALLBACK LAYER [ADD]... MAKE GPU DEL NODE \n");
         return false;
     }
     #endif

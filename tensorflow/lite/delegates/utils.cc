@@ -22,7 +22,7 @@ limitations under the License.
 #include "tensorflow/lite/context_util.h"
 
 #include "tensorflow/lite/kmdebug.h"
-#define DOT
+//#define DOT
 // #define lane
 
 namespace tflite {
